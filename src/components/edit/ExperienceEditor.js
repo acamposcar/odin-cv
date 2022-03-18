@@ -15,15 +15,15 @@ class ExperienceEditor extends Component {
     render() { 
 
         return ( 
-            <div className='personal-info-editor'>
-                <h3>Personal Information</h3> 
+            <div className='experience-editor'>
+                <h3>Experience</h3> 
                   <form id='personal-info-form' onSubmit={this.handleSubmit}>
-                    <TextField label='Company' name='experienceCompany' value={this.props.companyInput} inputChange={this.props.inputChange} />
-                    <TextField label='City' name='experienceCity' value={this.props.cityInput} inputChange={this.props.inputChange} />
-                    <TextField label='Role' name='experienceRole' value={this.props.roleInput} inputChange={this.props.inputChange} />
-                    <TextField label='From' name='experienceFrom' value={this.props.fromInput} inputChange={this.props.inputChange} />
-                    <TextField label='To' name='experienceTo' value={this.props.toInput} inputChange={this.props.inputChange} />
-                    <TextField label='Description' name='experienceDescription' value={this.props.descriptionInput} inputChange={this.props.inputChange} />
+                    <TextField label='Company' name='name' value={this.props.nameInput} inputChange={this.props.inputChange} />
+                    <TextField label='City' name='city' value={this.props.cityInput} inputChange={this.props.inputChange} />
+                    <TextField label='Role' name='role' value={this.props.roleInput} inputChange={this.props.inputChange} />
+                    <TextField label='From' name='from' value={this.props.fromInput} inputChange={this.props.inputChange} />
+                    <TextField label='To' name='to' value={this.props.toInput} inputChange={this.props.inputChange} />
+                    <TextField label='Description' name='description' value={this.props.descriptionInput} inputChange={this.props.inputChange} />
                   </form>
             </div>
         );

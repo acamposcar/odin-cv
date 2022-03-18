@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import TextField from '../utils/TextField';
 
 
 class PersonalInformationPreview extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
     render() { 
         return ( 

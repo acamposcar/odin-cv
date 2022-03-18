@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PersonalInformationEditor from "./edit/PersonalInformationEditor";
 import ExperienceEditor from "./edit/ExperienceEditor";
 import PersonalInformationPreview from "./preview/PersonalInformationPreview";
+import ExperiencePreview from "./preview/ExperiencePreview";
 
 
 
@@ -9,25 +10,51 @@ import PersonalInformationPreview from "./preview/PersonalInformationPreview";
 class Wrapper extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangePersonal = this.handleChangePersonal.bind(this);
+    this.handleChangeExperience = this.handleChangeExperience.bind(this);
+
     this.state = {
-        personalName: '',
-        personalRole: '',
-        personalAddress: '',
-        personalPhone: '',
-        personalEmail: '',
-        personalLinkedin: '',
+        personal:{
+            name: '',
+            role: '',
+            address: '',
+            phone: '',
+            email: '',
+            linkedin: '',
+        },
+        company: {
+            name: '',
+            city: '',
+            role: '',
+            from: '',
+            to: '',
+            description: '',
+        }
     };
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
+    handleChangePersonal(event) {
+        this.setState(prevState => ({
+            personal: {
+                ...prevState.personal,
+                [event.target.name]: event.target.value
+            }
+        }))
+    }
+
+    handleChangeExperience(event) {
+        console.log(event)
+        this.setState(prevState => ({
+            company: {
+                ...prevState.company,
+                [event.target.name]: event.target.value
+            }
+        }))
+    }
+
 
     render() { 
-        const { personalName, personalEmail, personalAddress, personalLinkedin, personalPhone, personalRole } = this.state;
+        const { personal, company } = this.state;
 
         return ( 
             <div className='wrapper'>
@@ -35,13 +62,23 @@ class Wrapper extends Component {
                 <div className='editor'>
                     <h1>Editor</h1>
                     <PersonalInformationEditor 
-                        nameInput={personalName} 
-                        emailInput={personalEmail} 
-                        addressInput={personalAddress}
-                        linkedinInput={personalLinkedin} 
-                        phoneInput={personalPhone} 
-                        roleInput={personalRole} 
-                        inputChange={this.handleChange} 
+                        nameInput={personal.name} 
+                        emailInput={personal.email} 
+                        addressInput={personal.address}
+                        linkedinInput={personal.linkedin} 
+                        phoneInput={personal.phone} 
+                        roleInput={personal.role} 
+                        inputChange={this.handleChangePersonal} 
+                    />
+
+                    <ExperienceEditor 
+                        nameInput={company.name} 
+                        cityInput={company.city} 
+                        roleInput={company.role}
+                        fromInput={company.from} 
+                        toInput={company.to} 
+                        descriptionInput={company.description} 
+                        inputChange={this.handleChangeExperience} 
                     />
 
                 </div>
@@ -50,12 +87,21 @@ class Wrapper extends Component {
 
                     <h1>Preview</h1>
                     <PersonalInformationPreview 
-                        nameValue={personalName} 
-                        emailValue={personalEmail} 
-                        addressValue={personalAddress}
-                        linkedinValue={personalLinkedin} 
-                        phoneValue={personalPhone} 
-                        roleValue={personalRole} 
+                        nameValue={personal.name} 
+                        emailValue={personal.email} 
+                        addressValue={personal.address}
+                        linkedinValue={personal.linkedin} 
+                        phoneValue={personal.phone} 
+                        roleValue={personal.role} 
+                    />
+
+                    <ExperiencePreview
+                        name={company.name} 
+                        city={company.city} 
+                        role={company.role}
+                        from={company.from} 
+                        to={company.to} 
+                        description={company.description} 
                     />
                 </div>
             </div>
