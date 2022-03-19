@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PersonalInformationEditor from "./edit/PersonalInformationEditor";
 import ExperienceEditor from "./edit/ExperienceEditor";
+import EducationEditor from './edit/EducationEditor';
 import PersonalInformationPreview from "./preview/PersonalInformationPreview";
 import ExperiencePreview from "./preview/ExperiencePreview";
+import EducationPreview from './preview/EducationPreview';
 
 
 
@@ -12,6 +14,7 @@ class Wrapper extends Component {
     super(props);
     this.handleChangePersonal = this.handleChangePersonal.bind(this);
     this.handleChangeExperience = this.handleChangeExperience.bind(this);
+    this.handleChangeEducation = this.handleChangeEducation.bind(this);
 
     this.state = {
         personal:{
@@ -22,10 +25,20 @@ class Wrapper extends Component {
             email: '',
             linkedin: '',
         },
+        experience: [],
         company: {
             name: '',
             city: '',
             role: '',
+            from: '',
+            to: '',
+            description: '',
+        },
+        education: [],
+        organization: {
+            organization: '',
+            city: '',
+            title: '',
             from: '',
             to: '',
             description: '',
@@ -43,10 +56,19 @@ class Wrapper extends Component {
     }
 
     handleChangeExperience(event) {
-        console.log(event)
         this.setState(prevState => ({
             company: {
                 ...prevState.company,
+                [event.target.name]: event.target.value
+            },
+            experience: this.state.experience.concat(this.state.company)
+        }))
+    }
+
+    handleChangeEducation(event) {
+        this.setState(prevState => ({
+            organization: {
+                ...prevState.organization,
                 [event.target.name]: event.target.value
             }
         }))
@@ -54,7 +76,7 @@ class Wrapper extends Component {
 
 
     render() { 
-        const { personal, company } = this.state;
+        const { personal, company, organization, experience, education } = this.state;
 
         return ( 
             <div className='wrapper'>
@@ -70,7 +92,7 @@ class Wrapper extends Component {
                         roleInput={personal.role} 
                         inputChange={this.handleChangePersonal} 
                     />
-
+                    
                     <ExperienceEditor 
                         nameInput={company.name} 
                         cityInput={company.city} 
@@ -79,6 +101,16 @@ class Wrapper extends Component {
                         toInput={company.to} 
                         descriptionInput={company.description} 
                         inputChange={this.handleChangeExperience} 
+                    />
+
+                    <EducationEditor 
+                        organizationInput={organization.organization} 
+                        cityInput={organization.city} 
+                        titleInput={organization.title}
+                        fromInput={organization.from} 
+                        toInput={organization.to} 
+                        descriptionInput={organization.description} 
+                        inputChange={this.handleChangeEducation} 
                     />
 
                 </div>
@@ -95,13 +127,26 @@ class Wrapper extends Component {
                         roleValue={personal.role} 
                     />
 
-                    <ExperiencePreview
-                        name={company.name} 
-                        city={company.city} 
-                        role={company.role}
-                        from={company.from} 
-                        to={company.to} 
-                        description={company.description} 
+                    {experience.map((company) => {
+                        return (
+                            <ExperiencePreview
+                                name={company.name} 
+                                city={company.city} 
+                                role={company.role}
+                                from={company.from} 
+                                to={company.to} 
+                                description={company.description} 
+                            />
+                        );
+                    })}
+
+                    <EducationPreview
+                        organization={organization.organization} 
+                        city={organization.city} 
+                        title={organization.title}
+                        from={organization.from} 
+                        to={organization.to} 
+                        description={organization.description} 
                     />
                 </div>
             </div>
