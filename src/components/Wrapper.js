@@ -127,18 +127,15 @@ class Wrapper extends Component {
                         roleValue={personal.role} 
                     />
 
-                    {experience.map((company) => {
-                        return (
-                            <ExperiencePreview
-                                name={company.name} 
-                                city={company.city} 
-                                role={company.role}
-                                from={company.from} 
-                                to={company.to} 
-                                description={company.description} 
-                            />
-                        );
-                    })}
+                    <ExperiencePreview
+                        name={company.name} 
+                        city={company.city} 
+                        role={company.role}
+                        from={company.from} 
+                        to={company.to} 
+                        description={company.description} 
+                    />
+
 
                     <EducationPreview
                         organization={organization.organization} 
