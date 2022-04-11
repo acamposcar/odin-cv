@@ -32,7 +32,7 @@ function EducationInputs(props) {
   const updateItemByID = (item, id, property, value) => {
     if (item.id === id) {
       if (property === 'from' || property === 'to') return { ...item, [property]: new Date(value) };
-      return { ...item, [property]: value.trim() };
+      return { ...item, [property]: value };
     }
     return item;
   };
@@ -60,7 +60,8 @@ function EducationInputs(props) {
   };
 
   useEffect(() => {
-    onUpdateEducation(education);
+    const debounceTimer = setTimeout(() => onUpdateEducation(education), 500);
+    return () => { clearTimeout(debounceTimer); };
   }, [education]);
 
   return (

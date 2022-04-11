@@ -11,13 +11,14 @@ function PersonalInputs(props) {
   const [personalData, setPersonalData] = useState(DUMMY_PERSONAL);
 
   useEffect(() => {
-    onUpdatePersonal(personalData);
+    const debounceTimer = setTimeout(() => onUpdatePersonal(personalData), 500);
+    return () => { clearTimeout(debounceTimer); };
   }, [personalData]);
 
   const inputChangeHandler = (event) => {
     setPersonalData((prevState) => ({
       ...prevState,
-      [event.target.name]: event.target.value.trim(),
+      [event.target.name]: event.target.value,
     }));
   };
 

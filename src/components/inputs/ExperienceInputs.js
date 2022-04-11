@@ -32,7 +32,7 @@ function ExperienceInputs(props) {
   const updateItemByID = (item, id, property, value) => {
     if (item.id === id) {
       if (property === 'from' || property === 'to') return { ...item, [property]: new Date(value) };
-      return { ...item, [property]: value.trim() };
+      return { ...item, [property]: value };
     }
     return item;
   };
@@ -60,7 +60,8 @@ function ExperienceInputs(props) {
   };
 
   useEffect(() => {
-    onUpdateExperience(experience);
+    const debounceTimer = setTimeout(() => onUpdateExperience(experience), 500);
+    return () => { clearTimeout(debounceTimer); };
   }, [experience]);
 
   return (
