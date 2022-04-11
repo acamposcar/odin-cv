@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Inputs from './components/inputs/Inputs';
 import Preview from './components/preview/Preview';
-import Nav from './components/Nav';
+import Header from './components/Header';
 
 function App() {
   const [personal, setPersonal] = useState({});
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      <Header />
       <Container maxWidth="xl" sx={{ marginBottom: 5 }}>
         <Grid container spacing={10}>
           <Grid item xs={12} sm={12} md={4}>
