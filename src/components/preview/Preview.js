@@ -10,7 +10,7 @@ function Preview(props) {
 
   return (
 
-    <Box>
+    <Box sx={{ overflow: 'auto' }}>
       <h2>Preview</h2>
       <Card variant="outlined" sx={{ minWidth: '700px', marginBottom: 3, padding: 4 }}>
         <CardContent>
