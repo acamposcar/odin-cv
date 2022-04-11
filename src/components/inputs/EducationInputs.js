@@ -67,6 +67,7 @@ function EducationInputs(props) {
     <div>
       <h2>Education</h2>
       {education.map((edu) => (
+
         <Card key={edu.id} variant="outlined" sx={{ marginBottom: 3, minWidth: 275 }}>
           <CardContent>
             <Stack spacing={2}>
@@ -78,6 +79,7 @@ function EducationInputs(props) {
               <TextField label="Description" value={edu.description} multiline rows={4} name="description" variant="outlined" onChange={(event) => inputChangeHandler(event, edu.id)} />
               <CardActions>
                 <Button variant="outlined" size="small" color="error" startIcon={<DeleteIcon />} onClick={(event) => deleteEducationHandler(event, edu.id)}>Delete</Button>
+
               </CardActions>
             </Stack>
           </CardContent>
