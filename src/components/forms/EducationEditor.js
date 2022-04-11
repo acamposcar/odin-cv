@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextField from '../utils/TextField';
 
 
-class ExperienceEditor extends Component {
+class EducationEditor extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,12 +15,11 @@ class ExperienceEditor extends Component {
     render() { 
 
         return ( 
-            <div className='experience-editor'>
-                <h3>Experience</h3> 
+            <div className='education-editor'>
                   <form id='personal-info-form' onSubmit={this.handleSubmit}>
-                    <TextField label='Company' name='name' value={this.props.nameInput} inputChange={this.props.inputChange} />
+                    <TextField label='Organization' name='organization' value={this.props.organizationInput} inputChange={this.props.inputChange} />
                     <TextField label='City' name='city' value={this.props.cityInput} inputChange={this.props.inputChange} />
-                    <TextField label='Role' name='role' value={this.props.roleInput} inputChange={this.props.inputChange} />
+                    <TextField label='Title' name='title' value={this.props.titleInput} inputChange={this.props.inputChange} />
                     <TextField label='From' name='from' value={this.props.fromInput} inputChange={this.props.inputChange} />
                     <TextField label='To' name='to' value={this.props.toInput} inputChange={this.props.inputChange} />
                     <TextField label='Description' name='description' value={this.props.descriptionInput} inputChange={this.props.inputChange} />
@@ -30,4 +29,4 @@ class ExperienceEditor extends Component {
     }
 }
  
-export default ExperienceEditor;
+export default EducationEditor;

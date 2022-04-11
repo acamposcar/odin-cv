@@ -7,7 +7,6 @@ class EducationPreview extends Component {
     render() { 
         return ( 
             <div className='education-preview'>
-              <h3>Education:</h3>
                 <p>Organization: {this.props.organization}</p> 
                 <p>City: {this.props.city}</p> 
                 <p>Title: {this.props.title}</p> 
