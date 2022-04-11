@@ -7,14 +7,15 @@ function Nav() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      'background-color': 'grey',
+      background: '#363636',
       marginBottom: 5,
-      height: '80px',
-      fontSize: '3em',
+      height: '100px',
+      fontSize: '3.5em',
       fontWeight: 'bold',
+      color: 'white',
     }}
     >
-      CV Creator
+      CV APPLICATION
     </Box>
   );
 }
