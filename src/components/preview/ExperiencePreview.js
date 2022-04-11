@@ -1,21 +1,66 @@
-import React, { Component } from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { format } from 'date-fns';
 
+function ExperiencePreview(props) {
+  const { experience } = props;
 
-class ExperiencePreview extends Component {
+  const formatDate = (date) => {
+    if (!date) return '';
+    return format(date, 'MMM y');
+  };
+  return (
+    <div>
 
+      <Typography
+        sx={{
+          margin: '1em 0em 0.5em 0em', padding: '0.1em', background: '#c3c3c3',
+        }}
+        variant="h4"
+        component="h2"
+      >
+        Experience
+      </Typography>
 
-    render() { 
-        return ( 
-            <div className='experience-preview'>
-                <p>Company: {this.props.name}</p> 
-                <p>City: {this.props.city}</p> 
-                <p>Role: {this.props.role}</p> 
-                <p>From: {this.props.from}</p> 
-                <p>To: {this.props.to}</p> 
-                <p>Description: {this.props.description}</p> 
-            </div>
-        );
-    }
+      {experience.map((exp) => (
+        <Box
+          key={exp.id}
+          sx={{
+            display: 'flex', flexDirection: 'column', marginBottom: '1.5em',
+          }}
+        >
+          <Typography variant="h5" component="h5" sx={{ fontWeight: '500' }}>
+            {(exp.role)}
+          </Typography>
+          <Box sx={{ display: 'flex', gap: '0.5em', alignItems: 'center' }}>
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {(exp.name)}
+              ,
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {(exp.city)}
+              {' '}
+              |
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {(formatDate(exp.from))}
+              {' '}
+              -
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {(formatDate(exp.to))}
+            </Typography>
+          </Box>
+          <Box sx={{ }}>
+            {(exp.description)}
+          </Box>
+        </Box>
+      ))}
+    </div>
+  );
 }
- 
+
 export default ExperiencePreview;

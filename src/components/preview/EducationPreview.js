@@ -1,21 +1,66 @@
-import React, { Component } from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { format } from 'date-fns';
 
+function EducationPreview(props) {
+  const { education } = props;
 
-class EducationPreview extends Component {
+  const formatDate = (date) => {
+    if (!date) return '';
+    return format(date, 'MMM y');
+  };
+  return (
+    <div>
 
+      <Typography
+        sx={{
+          margin: '1em 0em 0.5em 0em', padding: '0.1em', background: '#c3c3c3',
+        }}
+        variant="h4"
+        component="h2"
+      >
+        Education
+      </Typography>
 
-    render() { 
-        return ( 
-            <div className='education-preview'>
-                <p>Organization: {this.props.organization}</p> 
-                <p>City: {this.props.city}</p> 
-                <p>Title: {this.props.title}</p> 
-                <p>From: {this.props.from}</p> 
-                <p>To: {this.props.to}</p> 
-                <p>Description: {this.props.description}</p> 
-            </div>
-        );
-    }
+      {education.map((edu) => (
+        <Box
+          key={edu.id}
+          sx={{
+            display: 'flex', flexDirection: 'column', marginBottom: '1.5em',
+          }}
+        >
+          <Typography variant="h5" component="h5" sx={{ fontWeight: '500' }}>
+            {edu.title}
+          </Typography>
+          <Box sx={{ display: 'flex', gap: '0.5em', alignItems: 'center' }}>
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {edu.organization}
+              ,
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {edu.city}
+              {' '}
+              |
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {formatDate(edu.from)}
+              {' '}
+              -
+            </Typography>
+
+            <Typography variant="h6" component="h6" sx={{ fontWeight: '400', color: 'grey' }}>
+              {formatDate(edu.to)}
+            </Typography>
+          </Box>
+          <Box sx={{ }}>
+            {edu.description}
+          </Box>
+        </Box>
+      ))}
+    </div>
+  );
 }
- 
+
 export default EducationPreview;
