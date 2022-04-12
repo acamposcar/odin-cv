@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const school = (organization, city, title, from, to, description) => {
+const school = (organization, city, title, from, to, description) => {
   const id = uuidv4();
   return {
     id, organization, city, title, from, to, description,
